@@ -1,0 +1,41 @@
+Exercise 2.3 week 2
+Johan Urban s1024726
+Paolo Scattolin s1023775
+
+ghci output: 
+
+1)
+Prelude> product [1..10] :: Int
+3628800
+Prelude> product [1..10] :: Integer
+3628800
+The ouputs are the same.
+
+2)
+Prelude> product [1..20] :: Int
+2432902008176640000
+Prelude> product [1..20] :: Integer
+2432902008176640000
+The outputs are the same.
+
+3)
+Prelude> product [1..21] :: Int
+-4249290049419214848
+Prelude> product [1..21] :: Integer
+51090942171709440000
+The outputs vary significantly. Due to the large negative value of the instruction with type annotation Int, it is likely the result of integer overflow. The product using Integer types does not overflow because the size of the number is not limited by a number of bits (i.e. 32 or 64), but rather by the size of memory itself. 
+
+4)
+Prelude> product [1..65] :: Int
+-9223372036854775808
+Prelude> product [1..65] :: Integer
+8247650592082470666723170306785496252186258551345437492922123134388955774976000000000000000
+Similarily as in 3) the results vary significantly (even more now).
+
+5)
+Prelude> product [1..66] :: Int
+0
+Prelude> product [1..66] :: Integer
+544344939077443064003729240247842752644293064388798874532860126869671081148416000000000000000
+The result of type Integer has grown further, whereas the operation of type Int has come back to 0.
+(We could not figure out 'why' the result was 0 in the time that we had. Perhaps there was an issue with multiplication of int types with differnt bit sizes. please inform us of the correct answer :) )
